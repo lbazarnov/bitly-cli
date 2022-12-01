@@ -2,16 +2,13 @@ install:
 	poetry install
 
 brain-games:
-	poetry run brain-games
+	poetry run bitly-cli
 
 build:
 	poetry build
-
-publish:
-	poetry publish --dry-run
 
 package-install:
 	python3 -m pip install --user --force-reinstall dist/*.whl
 
 lint:
-	poetry run flake8 brain_games
+	poetry run flake8 bitly_cli
