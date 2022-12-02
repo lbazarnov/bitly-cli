@@ -2,26 +2,56 @@ import requests
 import prompt
 import os
 from dotenv import load_dotenv
+from urllib.parse import urlparse
 
 
 def shorten_link(long_url, token):
-    url = 'https://api-ssl.bitly.com/v4/bitlinks'
-    headers = {'Authorization': f'Bearer {token}'}
+    bitly_url = 'https://api-ssl.bitly.com/v4/bitlinks'
+    header = {'Authorization': f'Bearer {token}'}
     payload = {'long_url': long_url}
-    response = requests.post(url, headers=headers, json=payload)
+    response = requests.post(bitly_url, headers=header, json=payload)
     response.raise_for_status()
     bitlink = response.json()['id']
     return bitlink
 
 
+def count_clicks(bitlink, token):
+    bitly_url = f'https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary'  # noqa: E501
+    header = {'Authorization': f'Bearer {token}'}
+    payload = {
+        'units': -1,
+        'unit': 'day'
+    }
+    response = requests.get(bitly_url, headers=header, params=payload)
+    response.raise_for_status()
+    clicks_count = response.json()['total_clicks']
+    return clicks_count
+
+
+def is_bitlink(url, token):
+    parsed_url = urlparse(url)
+    basic_url = f'{parsed_url.netloc}{parsed_url.path}'
+    header = {'Authorization': f'Bearer {token}'}
+    bitly_url = f'https://api-ssl.bitly.com/v4/bitlinks/{basic_url}'
+    response = requests.get(bitly_url, headers=header)
+    return response.ok
+
+
 def main():
     load_dotenv()
     token = os.getenv('TOKEN')
-    long_url = prompt.string('Введите ссылку: ')
-    try:
-        print('Ваша ссылка: ', shorten_link(long_url, token))
-    except requests.exceptions.HTTPError as error:
-        print(error)
+    user_url = prompt.string('Prompt URL: ')
+
+    if is_bitlink(user_url, token):
+        try:
+            print('Total clicks: ', count_clicks(user_url, token))
+        except requests.exceptions.HTTPError as error:
+            print(error)
+    else:
+        try:
+            print('Bitlink: ', shorten_link(user_url, token))
+        except requests.exceptions.HTTPError as error:
+            print(error)
 
 
 if __name__ == '__main__':

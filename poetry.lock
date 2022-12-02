@@ -134,8 +134,8 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.10"
-content-hash = "0f1dfb84421c63ee254181be0317d13cb6daec3556052f5cba9ce3650380c8d2"
+python-versions = "^3.8.1"
+content-hash = "1e6fe4788c8aabb88618d7768523efc1a7af972874f7e003c7e096bb7c5bea8e"
 
 [metadata.files]
 autopep8 = [

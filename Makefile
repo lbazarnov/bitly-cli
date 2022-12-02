@@ -1,8 +1,8 @@
 install:
 	poetry install
 
-brain-games:
-	poetry run bitly-cli
+bitly-cli:
+	poetry run bitly_cli
 
 build:
 	poetry build
