@@ -16,7 +16,9 @@ def shorten_link(long_url, token):
 
 
 def count_clicks(bitlink, token):
-    bitly_url = f'https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary'  # noqa: E501
+    parsed_url = urlparse(bitlink)
+    basic_url = f'{parsed_url.netloc}{parsed_url.path}'
+    bitly_url = f'https://api-ssl.bitly.com/v4/bitlinks/{basic_url}/clicks/summary'  # noqa: E501
     header = {'Authorization': f'Bearer {token}'}
     payload = {
         'units': -1,
@@ -39,7 +41,7 @@ def is_bitlink(url, token):
 
 def main():
     load_dotenv()
-    token = os.getenv('TOKEN')
+    token = os.environ['BITLY_TOKEN']
     user_url = prompt.string('Prompt URL: ')
 
     if is_bitlink(user_url, token):
