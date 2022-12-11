@@ -59,14 +59,6 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
-name = "prompt"
-version = "0.4.1"
-description = "Library for prompting input on the command line."
-category = "main"
-optional = false
-python-versions = ">=3.3"
-
-[[package]]
 name = "pycodestyle"
 version = "2.10.0"
 description = "Python style guide checker"
@@ -135,7 +127,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8.1"
-content-hash = "1e6fe4788c8aabb88618d7768523efc1a7af972874f7e003c7e096bb7c5bea8e"
+content-hash = "464bf6466c6ce0fffe76168b43a891afacb5c776f746a4318b0921befe3f02fb"
 
 [metadata.files]
 autopep8 = [
@@ -161,10 +153,6 @@ idna = [
 mccabe = [
     {file = "mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e"},
     {file = "mccabe-0.7.0.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325"},
-]
-prompt = [
-    {file = "prompt-0.4.1-py3-none-any.whl", hash = "sha256:98527de8dc3f0aa29669a39fbffeaf578ba6654dc836f737b6a5c6f9279002b7"},
-    {file = "prompt-0.4.1.tar.gz", hash = "sha256:8a7694b88f8c65188a983315e72582bf42fcc251b97042be1d2a2ad1aa0ebe0e"},
 ]
 pycodestyle = [
     {file = "pycodestyle-2.10.0-py2.py3-none-any.whl", hash = "sha256:8a4eaf0d0495c7395bdab3589ac2db602797d76207242c17d470186815706610"},

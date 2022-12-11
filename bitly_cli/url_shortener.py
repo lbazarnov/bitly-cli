@@ -1,5 +1,5 @@
 import requests
-import prompt
+import argparse
 import os
 from dotenv import load_dotenv
 from urllib.parse import urlparse
@@ -42,7 +42,11 @@ def is_bitlink(url, token):
 def main():
     load_dotenv()
     token = os.environ['BITLY_TOKEN']
-    user_url = prompt.string('Prompt URL: ')
+    parser = argparse.ArgumentParser(
+        description='The script creates short link via Bitly API and counts clicks on it')  # noqa: E501
+    parser.add_argument('url', help='Enter short or long URL')
+    args = parser.parse_args()
+    user_url = args.url
 
     if is_bitlink(user_url, token):
         try:

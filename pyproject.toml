@@ -11,7 +11,6 @@ packages = [{include = "bitly_cli"}]
 python = "^3.8.1"
 requests = "^2.28.1"
 python-dotenv = "^0.21.0"
-prompt = "^0.4.1"
 
 [tool.poetry.scripts]
 bitly-cli = "bitly_cli.url_shortener:main"

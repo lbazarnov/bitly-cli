@@ -28,11 +28,11 @@
     $ make package-install # Для установки скрипта на компьютер
     ```
 
-4. Запустить скрипт командой
+4. Запустить скрипт командой `bitly-cli`, передав ссылку как аргумент к команде
     ```bash
-    $ bitly-cli
+    $ bitly-cli https://github.com/lbazarnov/bitly-cli.git
     ```
 
 ## Результат выполнения скрипта
 
-[![asciicast](https://asciinema.org/a/LWT1rzi6ss9Xm8dPmkntDYTva.svg)](https://asciinema.org/a/LWT1rzi6ss9Xm8dPmkntDYTva)
+[![asciicast](https://asciinema.org/a/19RydKLsPyDZnPt5JPmQD0DHY.svg)](https://asciinema.org/a/19RydKLsPyDZnPt5JPmQD0DHY)
